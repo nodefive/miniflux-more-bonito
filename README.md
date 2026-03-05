@@ -2,7 +2,7 @@
 
 A "more bonito" ;-) modded version of the Miniflux Bonito theme.
 
-![Screenshot](screenie.png)
+![Screenshot](morebonito.png)
 
 ## About
 This is a custom CSS theme for [Miniflux](https://miniflux.app/). It builds upon the original "Full Nord Overhaul" to deliver an even more refined and tweaked reading experience. 
