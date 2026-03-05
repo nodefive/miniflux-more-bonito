@@ -1,0 +1,335 @@
+/* 
+ORIGINAL: https://github.com/rghedin/minifluxbonito
+Version 1.2 - Full Nord Overhaul - Unified Final 
+
+MODDED: https://github.com/nodefive/miniflux-more-bonito
+Version 0.9 - A "more bonito" ;-) modded version of the above theme. 
+*/
+
+
+:root {
+    /* Global Background & Text */
+    --body-background-color: #101319;
+    --input-background-color: #07080c; 
+    --cor-fonte: #eceff4;
+    
+    /* Header & Navigation */
+    --cor-header-bg: #1a1f29;
+    --cor-logo: #2e3440;
+    --cor-link-meta: #91bcea;
+    --cor-link-meta-alt: #91bcea;
+    
+    /* Borders & Lines */
+    --pagination-border-color: #242933;
+    --header-list-border-color: #242933;
+    
+    --fs-conteudo: clamp(1.1875rem, 1.1505rem + 0.1852vw, 1.25rem);
+}
+
+/* --- Global Structure --- */
+body {
+    background-color: var(--body-background-color);
+    color: var(--cor-fonte);
+    margin-top: 20px !important;
+}
+
+/* Hide Unwanted Elements & Reset Unread Indicators */
+.skip-to-content-link, 
+.page-footer,
+.item-meta-icons-comments {
+    display: none !important;
+}
+
+article.feed-has-unread,
+article.category-has-unread {
+    background-color: transparent !important;
+    border: none !important;
+    padding: 1rem !important; 
+}
+
+/* --- SEARCH CENTERED --- */
+search[role="search"] {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2.5rem;
+}
+
+.search-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 600px;
+}
+
+.search-input-row {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+    margin-bottom: 0.5rem;
+}
+
+.search-input-row input {
+    flex-grow: 1;
+}
+
+/* --- REMOVE FOCUS GLOWS --- */
+button:focus,
+input:focus,
+textarea:focus,
+select:focus,
+.button:focus,
+.page-button:focus,
+a:focus {
+    outline: none !important;
+    box-shadow: none !important;
+    border-color: var(--cor-link-meta) !important;
+}
+
+/* --- HEADER (Protected Layout) --- */
+.header {
+    margin: 0 0 2.5rem;
+    padding: 0;
+    background-color: var(--cor-header-bg);
+    font-size: .9rem;
+    border-radius: 6px;
+}
+.header nav { align-items: center; }
+.logo {
+    padding: .5rem;
+    background-color: var(--cor-logo);
+    border-radius: 6px 0 0 6px;
+}
+#header-menu {
+    text-align: center;
+    margin: 0 auto;
+    padding: .5rem 1rem;
+}
+@media (min-width: 620px) {
+    #header-menu { display: flex; flex-grow: 1; justify-content: space-between; }
+}
+@media (min-width: 830px) {
+    .header { margin: 1rem 0 2.5rem; }
+}
+
+/* --- PAGE HEADER (Side-by-side Title & Actions) --- */
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    border-bottom: 1px dashed var(--pagination-border-color);
+    padding: 0 0 0.5rem;
+    margin-bottom: 1rem !important; 
+}
+.page-header h1 {
+    border-bottom: none !important;
+    margin: 0;
+    padding: 0 1rem !important;
+}
+.page-header nav {
+    padding: 0 1rem;
+    display: inline-flex !important;
+}
+.page-header nav ul {
+    display: flex;
+    gap: 10px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+@media (max-width: 600px) {
+    .page-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+}
+
+/* --- PAGINATION --- */
+.pagination-top {
+    margin-top: 0.5rem !important;    
+    margin-bottom: 2rem !important;   
+    padding: 0;
+    border: none;
+}
+
+.pagination {
+    font-size: 0.8em !important;
+}
+
+/* --- ITEM TITLES & CATEGORY (Aligned Left & Centered Vertically) --- */
+.item-header {
+    display: flex;
+    justify-content: flex-start; 
+    align-items: center;         
+    gap: 12px;                   
+    margin-bottom: .5rem;
+}
+
+.item-title {
+    margin: 0;
+}
+
+.item-title a { 
+    font-weight: 500; 
+    color: #cee2f7 !important;
+    display: inline-flex;
+    align-items: center; 
+    gap: 10px;           
+    text-decoration: none;
+}
+
+.item-title a img {
+    margin: 0;
+    display: block;
+    flex-shrink: 0;
+}
+
+.category, 
+.category a {
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+    color: #949fb5;
+    text-decoration: none;
+    font-size: 0.85rem;
+    white-space: nowrap;
+}
+
+/* --- ITEM METADATA (Left-aligned & Stacked) --- */
+.item-meta {
+    display: flex;
+    flex-direction: column; 
+    align-items: flex-start; 
+    font-size: .7em !important;
+    margin-top: 0.75rem;
+}
+.item-meta-info { 
+    margin-bottom: 0.75rem !important; 
+    padding: 0;
+}
+.item-meta-icons {
+    display: flex;
+    gap: 10px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+/* --- UNIFIED BUTTONS (Read, Star, External Link) --- */
+button, 
+.button, 
+.page-button, 
+.item-meta-icons-external-url a,
+.item-meta-icons-star button {
+    background-color: var(--input-background-color) !important;
+    color: var(--cor-fonte) !important;
+    border: 1px solid var(--pagination-border-color) !important;
+    border-radius: 6px; 
+    padding: 8px 14px !important;
+    font-size: 0.85rem !important;
+    line-height: 1.2 !important;
+    text-decoration: none !important;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+/* Text Change: "Mark this page as read" -> "Mark page read" */
+button[data-action="markPageAsRead"] {
+    font-size: 0 !important; 
+}
+button[data-action="markPageAsRead"]::after {
+    content: "Mark page read";
+    font-size: 0.85rem !important; 
+}
+button[data-action="markPageAsRead"] svg {
+    margin-right: 8px;
+}
+
+/* Strict Underline Removal for Labels */
+.item-meta-icons-external-url a .icon-label,
+.item-meta-icons-star button .icon-label,
+.page-button .icon-label {
+    text-decoration: none !important;
+}
+
+button:hover, 
+.button:hover, 
+.page-button:hover, 
+.item-meta-icons-external-url a:hover,
+.item-meta-icons-star button:hover {
+    background-color: #1a1f29 !important;
+    border-color: var(--cor-link-meta) !important;
+}
+
+/* --- ROUND CHECKBOXES --- */
+input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    background-color: var(--input-background-color);
+    margin: 0 8px 0 0;
+    width: 1.15em; 
+    height: 1.15em;
+    border: 1px solid var(--pagination-border-color);
+    border-radius: 50%;
+    display: inline-grid; 
+    place-content: center; 
+    vertical-align: middle;
+}
+input[type="checkbox"]:checked::before {
+    content: ""; 
+    width: 0.65em; 
+    height: 0.65em;
+    border-radius: 50%; 
+    box-shadow: inset 1em 1em var(--cor-link-meta);
+}
+
+/* --- FEED TINTING --- */
+.item-title img, 
+.entry-website img, 
+.logo img {
+    filter: sepia(1) saturate(1) brightness(0.9) hue-rotate(185deg);
+}
+
+/* --- UI ELEMENTS --- */
+textarea, 
+select, 
+input:not([type="checkbox"]):not([type="radio"]), 
+.alert, 
+.dropdown-menu {
+    background-color: var(--input-background-color) !important;
+    color: var(--cor-fonte) !important;
+    border: 1px solid var(--pagination-border-color) !important;
+    border-radius: 6px; 
+    padding: 8px 12px;
+}
+
+.item {
+    border: 0;
+    border-bottom: 1px dashed var(--pagination-border-color);
+    margin-bottom: 2rem;
+    padding: 0 1rem .75rem;
+}
+.entry-content blockquote { 
+    padding-left: 1rem; 
+    border-left: 4px solid var(--cor-link-meta); 
+}
+
+/* --- DARK MODE SYNC --- */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --body-background-color: #101319;
+        --input-background-color: #07080c;
+        --cor-fonte: #eceff4;
+        --cor-header-bg: #1a1f29;
+        --cor-logo: #2e3440;
+        --cor-link-meta: #91bcea;
+        --cor-link-meta-alt: #91bcea;
+        --pagination-border-color: #242933;
+        --header-list-border-color: #242933;
+    }
+}
